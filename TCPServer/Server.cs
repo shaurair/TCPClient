@@ -28,7 +28,6 @@ namespace TCPServer
         {
             server = new SimpleTcpServer("127.0.0.1:1900");
             server.Events.ClientConnected += Events_ClientConnected;
-            server.Events.ClientDisconnected += Events_ClientDisconnected;
             server.Events.DataReceived += Events_DataReceived;
 
             server.Start();
@@ -54,11 +53,6 @@ namespace TCPServer
                     server.Send(ClientIP, "Wrong file name");
                 }
             });
-        }
-
-        private void Events_ClientDisconnected(object sender, ConnectionEventArgs e)
-        {
-
         }
 
         private void Events_ClientConnected(object sender, ConnectionEventArgs e)
