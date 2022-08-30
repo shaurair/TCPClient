@@ -45,8 +45,10 @@ namespace TCPClient
             this.Invoke((MethodInvoker)delegate
             {
                 txtMessage.Text = Client_Act.DownLoadStatus(e.Data);
-                btnStart.Enabled = true;
-
+                if (txtMessage.Text != "File receiving")
+                {
+                    btnStart.Enabled = true;
+                }
             });
         }
 
@@ -80,16 +82,34 @@ namespace TCPClient
 
     public class ClientAct
     {
-        string FillFileSavePath = string.Empty;
-        
-        public void SetFileReq(string FileName,string SavePath)
+        string FullFileSavePath = string.Empty;
+        bool IsFileTransfer = false;
+
+        public void SetFileReq(string FileName, string SavePath)
         {
-            FillFileSavePath = $"{SavePath}{FileName}";
+            FullFileSavePath = $"{SavePath}{FileName}";
+            IsFileTransfer = false;
         }
 
         public string DownLoadStatus( ArraySegment<byte> data)
         {
             string content = Encoding.UTF8.GetString(data);
+            if(IsFileTransfer)
+            {
+                if (File.Exists(FullFileSavePath))
+                {
+                    File.Delete(FullFileSavePath);
+                }
+
+                var WriteData = data;
+                using (FileStream fs = new FileStream(FullFileSavePath, FileMode.CreateNew))
+                {
+                    fs.Write(WriteData);
+                    fs.Close();
+                }
+
+                return "Success";
+            }
 
             if (content == "Wrong file name")
             {
@@ -97,19 +117,9 @@ namespace TCPClient
             }
             else
             {
-                if (File.Exists(FillFileSavePath))
-                {
-                    File.Delete(FillFileSavePath);
-                }
+                IsFileTransfer = true;
 
-                var WriteData = data;
-                using (FileStream fs = new FileStream(FillFileSavePath, FileMode.CreateNew))
-                {
-                    fs.Write(WriteData);
-                    fs.Close();
-                }
-
-                return "Success";
+                return "File receiving";
             }
         }
     }

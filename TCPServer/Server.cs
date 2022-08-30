@@ -43,6 +43,7 @@ namespace TCPServer
                 txtFileReq.Text = content;
                 if(Server_Act.IsFileExist(content))
                 {
+                    server.Send(ClientIP, "File exist");
                     using (var fs = new FileStream(FullFilepath, FileMode.Open))
                     {
                         server.SendAsync(ClientIP, fs.Length, fs);

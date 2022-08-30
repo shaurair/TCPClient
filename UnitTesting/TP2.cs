@@ -18,8 +18,9 @@ namespace TestProject2
         public void TestClient_Normal()
         {
             ClientTest.SetFileReq("Test1.txt", "D:/shaurair/CSharp/TCPClientFileSavePath");
-            var TestData = new ArraySegment<byte>(Encoding.ASCII.GetBytes("55688"));
-            Assert.AreEqual(ClientTest.DownLoadStatus(TestData), "Success");
+            var TestData = new ArraySegment<byte>(Encoding.ASCII.GetBytes("File exist"));
+
+            Assert.AreEqual(ClientTest.DownLoadStatus(TestData), "File receiving");
         }
         [TestMethod]
         public void TestClient_Abnormal()
