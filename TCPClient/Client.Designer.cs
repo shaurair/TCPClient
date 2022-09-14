@@ -134,9 +134,9 @@ namespace TCPClient
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.Size = new System.Drawing.Size(409, 30);
             this.txtFilePath.TabIndex = 5;
-            this.txtFilePath.Text = "D:/shaurair/CSharp/TCPClientFileSavePath/";
+            this.txtFilePath.Text = "../../../../TCPClientFileSavePath/";
             // 
-            // Form1
+            // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,7 +153,7 @@ namespace TCPClient
             this.Controls.Add(this.txtIP);
             this.Controls.Add(this.label5);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Client";
             this.Text = "TCP/IP Client";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

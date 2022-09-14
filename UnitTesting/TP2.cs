@@ -18,7 +18,7 @@ namespace TestProject2
         [TestMethod]
         public void TestClient_Normal()
         {
-            ClientTest.SetFileReq("Test1.txt", "D:/shaurair/CSharp/TCPClientFileSavePath");
+            ClientTest.SetFileReq("Test1.txt", "../../../../TCPClientFileSavePath");
             var TestData = new ArraySegment<byte>(Encoding.ASCII.GetBytes("File exist"));
 
             Assert.AreEqual(ClientTest.DownLoadStatus(TestData), "File receiving");
@@ -124,8 +124,8 @@ namespace TestProject2
         [TestMethod]
         public void ServerSendFile()
         {
-            string ServerFilepath = "D:/shaurair/CSharp/TCPServerFilePath/Test1.txt";
-            string ClientSaveFilepath = "D:/shaurair/CSharp/TCPClientFileSavePath/Test1.txt";
+            string ServerFilepath = "../../../../TCPServerFilePath/Test1.txt";
+            string ClientSaveFilepath = "../../../../TCPClientFileSavePath/Test1.txt";
             string ClientIP = string.Empty;
 
             if (File.Exists(ClientSaveFilepath))

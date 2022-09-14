@@ -72,7 +72,7 @@ namespace TCPServer
     public class ServerAct
     {
         string ClientIP = string.Empty;
-        string ServerFilepath = "D:/shaurair/CSharp/TCPServerFilePath/";
+        string ServerFilepath = "../../../../TCPServerFilePath/";
         bool IsSendFile = false;
         string SendMessage = string.Empty;
 

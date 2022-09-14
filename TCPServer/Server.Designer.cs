@@ -85,7 +85,7 @@ namespace TCPServer
             this.txtClientPort.Size = new System.Drawing.Size(150, 30);
             this.txtClientPort.TabIndex = 5;
             // 
-            // Form1
+            // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -97,7 +97,7 @@ namespace TCPServer
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Server";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TCP/IP Server";
             this.Load += new System.EventHandler(this.Form1_Load);
